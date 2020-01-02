@@ -1,0 +1,14 @@
+<h1 class="animated fadeIn">
+    Productos <small>de pastelería fina: {{termino}}</small></h1>
+
+<div *ngIf="productos.length<1" class="row animated fadeIn fast">
+    <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+            No existen resultados con el término: {{termino}}
+        </div>
+    </div>
+</div>
+
+<div class="card-columns">
+    <app-card [producto]="producto" [index]="producto.id" *ngFor="let producto of productos"></app-card>
+</div>

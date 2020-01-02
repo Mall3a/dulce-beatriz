@@ -1,0 +1,40 @@
+<h1 class="animated fadeIn">{{producto.nombre | uppercase}}</h1>
+<hr>
+<div class="row animated fadeIn">
+    <div class="col-md-4">
+        <img [src]="producto.img" class="img-fluid" [alt]="producto.nombre">
+        <br><br>
+        <a [routerLink]="['/productos']" class=" btn btn-outline-danger btn-block ">Regresar</a>
+    </div>
+    <div class="col-md-8 ">
+        <h3>{{producto.nombre}}</h3>
+        <hr>
+        <p>
+            {{producto.descripcion}}
+        </p>
+
+        <h4>Valores</h4>
+
+        <div *ngFor="let detalle of producto.detalle">
+            <div *ngIf="detalle.personas!=null ">
+                Para {{detalle.personas}} personas - ${{detalle.valor}} pesos
+            </div>
+            <div *ngIf="detalle.personas==null ">
+                <p><strong>{{detalle.producto}}</strong> - {{detalle.cantidad}} - ${{detalle.valor}} pesos</p>
+            </div>
+        </div>
+        <br>
+        <div *ngIf="producto.tipos.length >0 ">
+            <h4>Variedades</h4>
+
+            <div *ngFor="let tipo of producto.tipos; index as i">
+                {{tipo.nombre}}
+                <ul *ngIf="tipo.variedades!=''">
+                    <li *ngFor="let variedad of tipo.variedades">{{variedad}}</li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</div>
